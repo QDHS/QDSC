@@ -1,0 +1,8 @@
+<h3><%= params[:motd] %></h3>
+<% if @user != nil %>
+	<h3>Welcome <%= @user["name"] %></h3>
+	<%=link_to 'Log Out',:controller=>'users',:action=>'logout' %>
+<% else %>
+	<%=link_to 'Log In',:controller=>'users',:action=>'login' %>
+	<%=link_to 'Register',:controller=>'users',:action=>'register' %>
+<% end %>

@@ -1,0 +1,16 @@
+<%= form_for(:user,:url=>"/users/checklogin") do |f| %>
+	<div class="field">
+		<%= f.label :email %><br>
+		<%= f.text_field :email %>@qibaodwight.org
+	</div>
+	<div class="password">
+		<%= f.label :password %><br>
+		<%= f.text_field :password %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Login" %>
+	</div>
+	<div class="actions2">
+		<%= f.submit "Send Dynamic Password" %>
+	</div>
+<% end %>
