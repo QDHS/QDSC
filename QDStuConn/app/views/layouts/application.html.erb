@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>QDStuConn</title>
+    <title>QD Student Conncetion</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="image/ico" href="/public/favicon.ico">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="/public/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="/public/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/public/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag    'amazeui.flat', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-    <%= yield %>
+    <div>
+      <%= yield %>
+    </div>
+    <footer class="am-footer am-footer-default am-animation-fade am-footer-fixed-bottom">
+      <div class="am-footer-miscs ">
+        <p>由<a href="http://www.github.com/QDHS/" title="QDHS Git" target="_blank" class="">QD编程社</a>提供技术支持，以APACHE License开源</p>
+        <br><p>使用<a href="http://www.amazeui.org">AmazeUI</a>框架</p>
+        <br><p>CopyRight©2016 QD Student Union.</p>
+      </div>
+    </footer>
   </body>
 </html>

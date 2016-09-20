@@ -1,0 +1,2 @@
+module LandFHelper
+end

@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def new
     params.permit!
+    params[:uni_user][:email] = params[:uni_user][:email].downcase
     @user = UniUser.find_by_email(params[:uni_user][:email])
     if @user != nil
       redirect_to :controller=>'portal',:action=>'index',:motd=>"This account has already been registered"
@@ -37,6 +38,7 @@ class UsersController < ApplicationController
   end
 
   def checklogin
+    params[:user][:email] = params[:user][:email].downcase
     @user = UniUser.find_by_email(params[:user][:email])
     if @user != nil
       if params[:commit] == "Login"
@@ -45,20 +47,20 @@ class UsersController < ApplicationController
           redirect_to :controller=>'portal',:action=>'index'
         else
           session['loginedUser'] = nil
-        	redirect_to :controller=>'users',:action=>'login'
+        	redirect_to :controller=>'users',:action=>'login',:motd=>'Wrong password or email'
         end
       elsif params[:commit] == "Send Dynamic Password"
         pass = rand(999999)
         @user.password = pass
         @user.save
         NotifierMailer.pass(@user).deliver_now
-        redirect_to :controller=>'users',:action=>'login'
+        redirect_to :controller=>'users',:action=>'login',:motd=>'Password sent to email'
       else
-        redirect_to :controller=>'users',:action=>'login'
+        redirect_to :controller=>'users',:action=>'login',:motd=>'Something happened'
       end
     else
     	session['loginedUser'] = nil
-    	redirect_to :controller=>'users',:action=>'login'
+    	redirect_to :controller=>'users',:action=>'login',:motd=>'Wrong password or email'
     end
   end
 

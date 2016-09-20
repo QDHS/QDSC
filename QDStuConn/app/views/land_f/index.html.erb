@@ -1,0 +1,19 @@
+<header data-am-widget="header" data-am-sticky="{animation: 'slide-top'}" class="am-topbar am-topbar-inverse">
+  <h1 class="am-topbar-brand am-animation-slide-left">
+    <a href="/portal/index">Lost and Found</a>
+  </h1>
+  <div class="am-topbar-right">
+		<%= link_to "Return", "/portal/index", class: "am-btn am-btn-primary am-topbar-btn am-btn-sm" %>
+		<% if @user != nil %>
+			<div class="am-btn-group am-animation-slide-right">
+				<a class="am-btn am-btn am-btn-secondary am-topbar-btn am-btn-sm">Welcome <%= @user["name"] %></a>
+				<a href='/users/logout' class="am-btn am-btn-secondary am-topbar-btn am-btn-sm">Log out</a>
+			</div>
+		<% else %>
+			<div class="am-btn-group am-animation-slide-right">
+				<a href='/users/login' class="am-btn am-btn-secondary am-topbar-btn am-btn-sm">Log In</a>
+				<a href='/users/register' class="am-btn am-btn-success am-topbar-btn am-btn-sm">Register</a>
+			</div>
+		<% end %>
+  </div>
+</header>

@@ -1,16 +1,57 @@
-<%= form_for(:user,:url=>"/users/checklogin") do |f| %>
-	<div class="field">
-		<%= f.label :email %><br>
-		<%= f.text_field :email %>@qibaodwight.org
-	</div>
-	<div class="password">
-		<%= f.label :password %><br>
-		<%= f.text_field :password %>
-	</div>
-	<div class="actions">
-		<%= f.submit "Login" %>
-	</div>
-	<div class="actions2">
-		<%= f.submit "Send Dynamic Password" %>
-	</div>
-<% end %>
+<style>
+  .header {
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 200%;
+    color: #333;
+    margin-top: 30px;
+  }
+  .header p {
+    font-size: 14px;
+  }
+</style>
+
+<header data-am-widget="header" class="am-topbar am-topbar-inverse">
+  <h1 class="am-topbar-brand">
+    <a href="/portal/index">QDSC</a>
+  </h1>
+  <div class="am-topbar-right">
+    <a href="/portal/index" class="am-btn am-btn-secondary am-topbar-btn am-btn-sm">Return</a>
+  </div>
+</header>
+
+<div class="am-g">
+  <% if @alert || @warning %>
+     <div class="am-u-lg-4 am-u-md-6 am-u-sm-11 am-u-sm-centered am-animation-shake">
+  <% else %>
+    <div class="am-u-lg-4 am-u-md-6 am-u-sm-11 am-u-sm-centered am-animation-slide-left">
+  <% end %>
+    <div class="am-form" style="{margin-top:30px;margin-bottom:0px;}">
+      <% if params[:motd] %>
+        <div class="am-alert am-alert-warning"><a><%= params[:motd] %></a></div>
+      <% end %>
+      <%= form_for(:user,:url=>"/users/checklogin") do |f| %>
+        <h1>Log into QDSC</h1>
+				<div class="field">
+					<div class="am-input-group">
+            <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
+					  <%= f.text_field :email, :class => "am-form-field", :placeholder => "Email" %>
+            <span class="am-input-group-label">@qibaodwight.org</span>
+          </div>
+				</div>
+				<div class="password">
+          <div class="am-input-group">
+            <span class="am-input-group-label"><i class="am-icon-lock am-icon-fw"></i></span>
+					  <%= f.password_field :password, :class => "am-form-field", :placeholder => "Password" %>
+          </div>
+				</div>
+				<div class="actions">
+          <br>
+					<%= f.submit "Login", :class => "am-btn am-btn-primary am-fl" %>
+					<%= f.submit "Send Dynamic Password", :class => "am-btn am-btn-warning am-fr" %>
+				</div>
+			<% end %>
+    </div>
+  </div>
+</div>
