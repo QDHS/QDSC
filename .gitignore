@@ -19,3 +19,5 @@ QDStuConn/tmp/*
 
 # Ignore Byebug command history file.
 QDStuConn/.byebug_history
+
+QDStuConn/public/images/*
