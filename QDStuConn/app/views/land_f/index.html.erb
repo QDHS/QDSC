@@ -27,7 +27,12 @@
     <% for i in @objects %>
     <div class="am-u-lg-4 am-u-md-6 am-u-sm-12">
       <div class="am-panel am-panel-secondary">
-        <div class="am-panel-hd"><%= i[:title] %></div>
+        <div class="am-panel-hd">
+          <%= i[:title] %>
+          <% if @user != nil && @user[:user_class] == "Admin" %>
+            <%= link_to("Delete",{:controller =>'land_f',:action => 'delete',:obj =>i}) %>
+          <% end %>
+        </div>
         <div class="am-panel-bd">
           <%= image_tag i[:image], :class=>"am-img-responsive", :alt=>"" %>
         </div>

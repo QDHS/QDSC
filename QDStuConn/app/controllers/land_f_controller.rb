@@ -5,6 +5,11 @@ class LandFController < ApplicationController
 			@user = UniUser.find_by_email session[:loginedUser]["email"]
 		end
 		@objects = LfObject.all
+		for k in @objects
+			if !File.exist?("./public/images/#{k[:image]}")
+				k[:image] = ""
+			end
+		end
 	end
 
 	def assert_user(user)
@@ -16,6 +21,14 @@ class LandFController < ApplicationController
 		if @user != nil && @user[:user_class] == "Admin"
 			@obj = LfObject.new
 		else
+			redirect_to :controller=>'land_f',:action=>'index'
+		end
+	end
+
+	def delete
+		@lfobj = LfObject.find_by(params[:obj])
+		if @lfobj
+			@lfobj.delete
 			redirect_to :controller=>'land_f',:action=>'index'
 		end
 	end
