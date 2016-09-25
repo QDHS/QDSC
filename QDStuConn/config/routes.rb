@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'users/logout'
 
   get 'land_f/index'
+  get 'land_f/new_obj'
+  post 'land_f/new'
 
   get 'portal/index'
 

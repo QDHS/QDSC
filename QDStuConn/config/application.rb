@@ -13,3 +13,19 @@ module QDStuConn
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+def uploadFile(file)
+  if !(file.original_filename.empty?)
+    @filename = getFileName(file.original_filename)
+    File.open("./public/images/#{@filename}", "wb") do |f|
+      f.write(file.read)
+    end
+    return @filename
+  end
+end
+
+def getFileName(filename)
+  if !filename.nil?
+    return filename
+  end
+end

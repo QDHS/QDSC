@@ -1,0 +1,3 @@
+class LfObject < ApplicationRecord
+
+end

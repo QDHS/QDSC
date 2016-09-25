@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require assets/js/amazeui
+//= require assets/js/amazeui.widgets.helper

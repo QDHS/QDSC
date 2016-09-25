@@ -1,9 +1,12 @@
 <header data-am-widget="header" data-am-sticky="{animation: 'slide-top'}" class="am-topbar am-topbar-inverse">
   <h1 class="am-topbar-brand am-animation-slide-left">
-    <a href="/portal/index">Lost and Found</a>
+    <a href="/land_f/index">Lost and Found</a>
   </h1>
   <div class="am-topbar-right">
-		<%= link_to "Return", "/portal/index", class: "am-btn am-btn-primary am-topbar-btn am-btn-sm" %>
+    <% if @user != nil && @user[:user_class] == "Admin" %>
+      <a href='/land_f/new_obj' class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><i class="am-icon-plus am-icon-fw"></i></a>
+    <% end %>
+    <%= link_to "Return", "/portal/index", class: "am-btn am-btn-primary am-topbar-btn am-btn-sm" %>
 		<% if @user != nil %>
 			<div class="am-btn-group am-animation-slide-right">
 				<a class="am-btn am-btn am-btn-secondary am-topbar-btn am-btn-sm">Welcome <%= @user["name"] %></a>
@@ -15,5 +18,25 @@
 				<a href='/users/register' class="am-btn am-btn-success am-topbar-btn am-btn-sm">Register</a>
 			</div>
 		<% end %>
-  </div>
+	</div>
 </header>
+
+<div class="am-g">
+  <div class="am-u-lg-8 am-u-md-10 am-u-sm-12 am-u-sm-centered am-animation-slide-bottom">
+
+    <% for i in @objects %>
+    <div class="am-u-lg-4 am-u-md-6 am-u-sm-12">
+      <div class="am-panel am-panel-secondary">
+        <div class="am-panel-hd"><%= i[:title] %></div>
+        <div class="am-panel-bd">
+          <%= image_tag i[:image], :class=>"am-img-responsive", :alt=>"" %>
+        </div>
+        <div class="am-panel-bd">
+          <%= i[:description] %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+</div>

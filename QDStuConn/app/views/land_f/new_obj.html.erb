@@ -1,0 +1,69 @@
+<header data-am-widget="header" data-am-sticky="{animation: 'slide-top'}" class="am-topbar am-topbar-inverse">
+  <h1 class="am-topbar-brand am-animation-slide-left">
+    <a href="/land_f/index">Lost and Found</a>
+  </h1>
+  <div class="am-topbar-right">
+		<%= link_to "Return", "/land_f/index", class: "am-btn am-btn-primary am-topbar-btn am-btn-sm" %>
+		<% if @user != nil %>
+			<div class="am-btn-group am-animation-slide-right">
+				<a class="am-btn am-btn am-btn-secondary am-topbar-btn am-btn-sm">Welcome <%= @user["name"] %></a>
+				<a href='/users/logout' class="am-btn am-btn-secondary am-topbar-btn am-btn-sm">Log out</a>
+			</div>
+		<% else %>
+			<div class="am-btn-group am-animation-slide-right">
+				<a href='/users/login' class="am-btn am-btn-secondary am-topbar-btn am-btn-sm">Log In</a>
+				<a href='/users/register' class="am-btn am-btn-success am-topbar-btn am-btn-sm">Register</a>
+			</div>
+		<% end %>
+  </div>
+</header>
+
+<div class="am-g">
+
+<div class="am-u-lg-8 am-u-md-10 am-u-sm-12 am-u-sm-centered am-animation-slide-bottom">
+
+	<div class="am-form" style="{margin-top:30px;margin-bottom:0px;}">
+		<%= form_for(:land_f, :url=>"/land_f/new") do |f| %>
+		<div class="field">
+			<div class="am-input-group">
+				<span class="am-input-group-label"><i class="am-icon-tags am-icon-fw"></i></span>
+				<%= f.text_field :title, :class => "am-form-field", :placeholder => "Title" %>
+			</div>
+		</div>
+		<div class="field">
+			<div class="am-input-group">
+				<span class="am-input-group-label"><i class="am-icon-file-text am-icon-fw"></i></span>
+				<%= f.text_field :description, :class => "am-form-field", :placeholder => "Discription" %>
+			</div>
+		</div>
+		<div class="field">
+      <br>
+      <div class="am-form-group am-form-file">
+        <button type="button" class="am-btn am-btn-danger am-btn-sm">
+          <i class="am-icon-cloud-upload"></i> 选择要上传的文件
+        </button>
+        <%= f.file_field :image, :class => "am-form-field" %>
+      </div>
+      <div id="file-list"></div>
+      <script>
+      $(function() {
+        $('#land_f_image').on('change', function() {
+          var fileNames = '';
+          $.each(this.files, function() {
+            fileNames += '<span class="am-badge">' + this.name + '</span> ';
+          });
+          $('#file-list').html(fileNames);
+        });
+      });
+      </script>
+			</div>
+		</div>
+		<div class="actions">
+			<br>
+			<%= f.submit "Add", :class => "am-btn am-btn-primary" %>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+</div>
