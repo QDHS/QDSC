@@ -18,12 +18,12 @@
   </h1>
   <div class="am-topbar-right">
 		<% if @user != nil %>
-			<div class="am-btn-group am-animation-slide-right">
+			<div class="am-btn-group">
 				<a class="am-btn am-btn am-btn-secondary am-topbar-btn am-btn-sm">Welcome <%= @user["name"] %></a>
 				<a href='/users/logout' class="am-btn am-btn-secondary am-topbar-btn am-btn-sm">Log out</a>
 			</div>
 		<% else %>
-			<div class="am-btn-group am-animation-slide-right">
+			<div class="am-btn-group">
 				<a href='/users/login' class="am-btn am-btn-secondary am-topbar-btn am-btn-sm">Log In</a>
 				<a href='/users/register' class="am-btn am-btn-success am-topbar-btn am-btn-sm">Register</a>
 			</div>
@@ -31,7 +31,9 @@
   </div>
 </header>
 
-<div class="am-u-lg-8 am-u-md-10 am-u-sm-12 am-u-sm-centered am-animation-slide-bottom">
+<div class="am-g">
+
+<div class="am-u-lg-8 am-u-md-10 am-u-sm-12 am-u-sm-centered am-animation-fade">
 
 	<% if params[:motd] %>
 		<div class="am-alert am-alert-warning"><h3><%= params[:motd] %></h3></div>
@@ -41,7 +43,7 @@
 		<div class="am-g">
   		<div class="am-u-sm-10 am-u-lg-6">
     		<div class="am-thumbnail">
-      		<%= image_tag(obj.img, :alt => "") %>
+      		<%= image_tag(obj.img, :alt => "", :class => "am-img-responsive") %>
       		<div class="am-thumbnail-caption">
         		<h3><%= obj.title %></h3>
         		<p>
@@ -55,5 +57,7 @@
   		</div>
 		</div>
 	<% end if @applications %>
+
+</div>
 
 </div>

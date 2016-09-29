@@ -8,12 +8,12 @@
     <% end %>
     <%= link_to "Return", "/portal/index", class: "am-btn am-btn-primary am-topbar-btn am-btn-sm" %>
 		<% if @user != nil %>
-			<div class="am-btn-group am-animation-slide-right">
+			<div class="am-btn-group">
 				<a class="am-btn am-btn am-btn-secondary am-topbar-btn am-btn-sm">Welcome <%= @user["name"] %></a>
 				<a href='/users/logout' class="am-btn am-btn-secondary am-topbar-btn am-btn-sm">Log out</a>
 			</div>
 		<% else %>
-			<div class="am-btn-group am-animation-slide-right">
+			<div class="am-btn-group">
 				<a href='/users/login' class="am-btn am-btn-secondary am-topbar-btn am-btn-sm">Log In</a>
 				<a href='/users/register' class="am-btn am-btn-success am-topbar-btn am-btn-sm">Register</a>
 			</div>
@@ -22,16 +22,13 @@
 </header>
 
 <div class="am-g">
-  <div class="am-u-lg-8 am-u-md-10 am-u-sm-12 am-u-sm-centered am-animation-slide-bottom">
+  <div class="am-u-lg-8 am-u-md-10 am-u-sm-12 am-u-sm-centered">
 
     <% for i in @objects %>
-    <div class="am-u-lg-4 am-u-md-6 am-u-sm-12">
+    <div class="am-u-lg-4 am-u-md-6 am-u-sm-12  am-animation-fade">
       <div class="am-panel am-panel-secondary">
         <div class="am-panel-hd">
           <%= i[:title] %>
-          <% if @user != nil && @user[:user_class] == "Admin" %>
-            <%= link_to("Delete",{:controller =>'land_f',:action => 'delete',:obj =>i}) %>
-          <% end %>
         </div>
         <div class="am-panel-bd">
           <%= image_tag i[:image], :class=>"am-img-responsive", :alt=>"" %>
@@ -39,6 +36,22 @@
         <div class="am-panel-bd">
           <%= i[:description] %>
         </div>
+        <% if @user != nil && @user[:user_class] == "Admin" %>
+          <div class="am-panel-bd">
+            <%= link_to("Delete",{:controller =>'land_f',:action => 'delete',:obj =>i}) %>
+          </div>
+        <% end %>
+        <% if @user != nil && i[:claim] == nil %>
+          <div class="am-panel-footer">
+            <%= link_to("Claim",{:controller =>'land_f',:action => 'claim',:obj =>i}) %>
+          </div>
+        <% elsif i[:claim] != nil %>
+          <% usr = UniUser.find_by_id i[:claim]%>
+          <div class="am-panel-footer">
+            <p>Claimed by <%= usr[:name] %>,</p>
+            <p>Email: <%= usr[:email] %>@qibaodwight.org</p>
+          </div>
+        <% end %>
       </div>
     </div>
     <% end %>

@@ -1,6 +1,6 @@
 class PortalController < ApplicationController
   def index
-    @lf = Applications.new("land_f","index","https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png","hhh",nil)
+    @lf = Applications.new("land_f","index","/assets/lf.jpg","Lost&Found",nil)
     @applications = Array.new
     @applications[0] = @lf
 

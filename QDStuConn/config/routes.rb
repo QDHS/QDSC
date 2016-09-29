@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'land_f/new_obj'
   post 'land_f/new'
   get 'land_f/delete'
+  get 'land_f/claim'
 
   get 'portal/index'
 
