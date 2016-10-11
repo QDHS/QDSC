@@ -9,7 +9,7 @@ ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
   address:        'smtp.163.com', # default: localhost
   port:           '25',                  # default: 25
-  user_name:      'bobcaocheng',
-  password:       'bob010205',
+  user_name:      'aoifjsof',
+  password:       'asfxcv',
   authentication: :plain                 # :plain, :login or :cram_md5
 }
